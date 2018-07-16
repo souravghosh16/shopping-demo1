@@ -1,0 +1,77 @@
+Looking for git in: git
+Using git 2.7.4 from git
+> git rev-parse --show-toplevel
+> git config --get commit.template
+Open repository: /opt/lampp/htdocs/school
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+> git rev-list --left-right master...origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :routes/web.php
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+> git rev-list --left-right master...origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+> git rev-list --left-right master...origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :.env~
+> git check-ignore -z --stdin
+> git show :.env
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name --abbrev-ref master@{u}
+> git rev-list --left-right master...origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :database/factories/UserFactory.php
+> git show :app/Providers/AppServiceProvider.php
+> git check-ignore -z --stdin
+> git show :app/User.php
+> git show :app/Providers/AuthServiceProvider.php
+> git show :config/auth.php
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :resources/assets/js/components/passport/AuthorizedClients.vue
+> git show :resources/assets/js/app.js
+> git show :resources/assets/js/bootstrap.js
+> git show :resources/assets/js/app.js
+> git show :routes/web.php
+> git show :routes/api.php
+> git show :routes/web.php
+> git show :resources/assets/js/components/passport/Clients.vue
+> git show :resources/assets/js/components/passport/PersonalAccessTokens.vue
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :app/Http/Controllers/ApiController.php.php
+> git show :app/Http/Controllers/ApiController.php
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :resources/views/layouts/app.blade.php
+> git show :resources/views/welcome.blade.php
+> git show :resources/views/home.blade.php
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
