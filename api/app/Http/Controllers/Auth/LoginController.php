@@ -43,7 +43,8 @@ class LoginController extends Controller
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('Laravel Personal Access Client')->accessToken; 
-            return response()->json(['success' => $success]); 
+            $success['name'] =  $user->name;
+            return response()->json($success); 
         } 
         else{ 
             return response()->json(['error'=>'Unauthorised'], 401); 
@@ -54,7 +55,7 @@ class LoginController extends Controller
         $validator = Validator::make($request->all(), [ 
             'name' => 'required', 
             'email' => 'required|email', 
-            'password' => 'required', 
+            'password' => 'required',
             'c_password' => 'required|same:password', 
         ]);
         if ($validator->fails()) { 
@@ -65,7 +66,7 @@ class LoginController extends Controller
         $user = User::create($input); 
         $success['token'] =  $user->createToken('Laravel Personal Access Client')->accessToken; 
         $success['name'] =  $user->name;
-        return response()->json(['success'=>$success]); 
+        return response()->json($success);
     }
     public function details() 
     { 

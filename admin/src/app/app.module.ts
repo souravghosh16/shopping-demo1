@@ -7,12 +7,13 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 // services
 import { LoginService } from './service/login.service';
+import { FormService } from './service/form.service';
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
@@ -27,6 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserAnimationsModule,
         HttpClientModule,
         HttpModule,
+        ReactiveFormsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -37,7 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard,LoginService],
+    providers: [AuthGuard,LoginService,FormService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

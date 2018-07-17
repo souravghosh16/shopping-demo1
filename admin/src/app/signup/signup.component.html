@@ -3,24 +3,28 @@
         <div class="col-md-4">
             <img class="user-avatar" src="assets/images/logo.png" width="150px" />
             <h1>SB Admin BS4 Angular5</h1>
-            <form role="form">
+            <form role="form" [formGroup]="signUpForm">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
+                        <input type="text" class="form-control input-underline input-lg" id="" formControlName="name" placeholder="Full Name">
+                        <span align="start" *ngIf="formErrors.name" class="form__error">{{ formErrors.name }}</span>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input type="text" class="form-control input-underline input-lg" id="" formControlName="email" placeholder="Email">
+                        <span align="start" *ngIf="formErrors.email" class="form__error">{{ formErrors.email }}</span>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input type="password" class="form-control input-underline input-lg" id="" formControlName="password" placeholder="Password">
+                        <span align="start" *ngIf="formErrors.password" class="form__error">{{ formErrors.password }}</span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
+                        <input type="password" class="form-control input-underline input-lg" id="" formControlName="c_password" placeholder="Repeat Password">
+                        <span align="start" *ngIf="formErrors.c_password" class="form__error">{{ formErrors.c_password }}</span>
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;
+                <button type="submit" [disabled]="!signUpForm.valid" class="btn rounded-btn" (click)="onRegistration()" > Register </button>&nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
             </form>
         </div>

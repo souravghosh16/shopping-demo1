@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { Router } from '@angular/router';
@@ -28,9 +28,11 @@ export class LoginService {
 
   private token: string;
   public url:any = environment.api;
+  public  headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
   constructor(private http: HttpClient, private router: Router) {}
 
   private saveToken(token: string): void {
+    localStorage.setItem('isLoggedin', 'true');
     localStorage.setItem('mean-token', token);
     this.token = token;
   }
@@ -67,13 +69,14 @@ export class LoginService {
     let base;
 
     if (method === 'post') {
-      base = this.http.post(`${this.url}/api/${type}`, user);
+      base = this.http.post(`${this.url}/${type}`, user,{ headers: this.headers});
     } else {
-      base = this.http.get(`${this.url}/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      base = this.http.get(`${this.url}/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
 
     const request = base.pipe(
       map((data: TokenResponse) => {
+        console.log(data);
         if (data.token) {
           this.saveToken(data.token);
         }
@@ -88,7 +91,7 @@ export class LoginService {
     return this.request('post', 'register', user);
   }
 
-  public login(user: TokenPayload): Observable<any> {
+  public login(user: TokenPayload): Observable<any> {    
     return this.request('post', 'login', user);
   }
 
@@ -99,6 +102,7 @@ export class LoginService {
   public logout(): void {
     this.token = '';
     window.localStorage.removeItem('mean-token');
+    localStorage.removeItem('isLoggedin');
     this.router.navigateByUrl('/');
   }
 

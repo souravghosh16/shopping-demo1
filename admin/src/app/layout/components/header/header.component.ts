@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-
+import { LoginService } from './../../../service/login.service';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router,private loginService: LoginService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
@@ -46,10 +46,11 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        this.loginService.logout(); 
     }
 
     changeLang(language: string) {
         this.translate.use(language);
     }
+   
 }
